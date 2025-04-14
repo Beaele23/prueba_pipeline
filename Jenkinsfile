@@ -16,5 +16,10 @@ pipeline {
                 bat 'node app.js &'
             }
         }
+        stage('Ejecutar pruebas') {
+           steps {
+               bat 'npm test'
+    }
+}
     }
 }
