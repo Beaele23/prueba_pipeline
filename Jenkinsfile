@@ -21,5 +21,10 @@ pipeline {
                bat 'npm test'
     }
 }
+post {
+    always {
+        junit 'path/to/results.xml'
+    }
+}
     }
 }
