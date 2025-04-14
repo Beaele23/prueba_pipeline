@@ -2,13 +2,13 @@ pipeline {
     agent any
     stages {
         stage('Clonar repositorio') {
-         steps {
-                git branch: 'main', url: 'https://github.com/Beaele23/prueba_pipeline.git'
+            steps {
+                git credentialsId: 'github-credentials', branch: 'main', url: 'https://github.com/Beaele23/prueba_pipeline.git'
             }
         }
         stage('Instalar dependencias') {
-         steps {
-                bat 'npm install'
+            steps {
+                bat 'npm install' 
             }
         }
         stage('Iniciar servidor') {
@@ -17,14 +17,15 @@ pipeline {
             }
         }
         stage('Ejecutar pruebas') {
-           steps {
-               bat 'npm test'
+            steps {
+                bat 'npm test'
+            }
+        }
     }
-}
-post {
-    always {
-        junit 'path/to/results.xml'
-    }
-}
+    post {
+        always {
+           
+            junit 'reports/results.xml'
+        }
     }
 }
