@@ -2,17 +2,17 @@ pipeline {
     agent any
     stages {
         stage('Clonar repositorio') {
-            bat {
+         steps {
                 git branch: 'main', url: '<URL_DE_TU_REPOSITORIO>'
             }
         }
         stage('Instalar dependencias') {
-            bat {
+         steps {
                 sh 'npm install'
             }
         }
         stage('Iniciar servidor') {
-            bat {
+            steps {
                 sh 'node app.js &'
             }
         }
