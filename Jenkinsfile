@@ -8,12 +8,12 @@ pipeline {
         }
         stage('Instalar dependencias') {
          steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('Iniciar servidor') {
             steps {
-                sh 'node app.js &'
+                bat 'node app.js &'
             }
         }
     }
